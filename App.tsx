@@ -9,15 +9,22 @@
  */
 
 import React from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Alert, Image, StyleSheet, Text, View } from 'react-native';
+
+import { DefaultButton } from './src/components';
+
 import { colors } from './src/utils/theme';
-import { DEVICE_HEIGHT, DEVICE_WIDTH } from './src/utils/dimensions';
+import { DEVICE_WIDTH } from './src/utils/dimensions';
+
+const titleButtom = 'boton';
+const showAlert = () => {
+  Alert.alert('Hola!');
+};
 
 const App = () => {
   //comentarios
   /*comentario */
-  console.log('Device height -> ', DEVICE_HEIGHT);
-  console.log('Device width ->', DEVICE_WIDTH);
+
   return (
     <View style={styles.mainContainer}>
       <Text style={styles.title}>Texto</Text>
@@ -26,6 +33,13 @@ const App = () => {
         source={{ uri: 'http://reactnative.dev/img/tiny_logo.png' }}
         style={styles.image}
         resizeMode="contain"
+      />
+      <DefaultButton
+        color={colors.mainOrange}
+        //additionalStyle={styles.button}
+        onPress={showAlert}
+        title={titleButtom}
+        text={24}
       />
       {/*this is a comment */}
     </View>
@@ -48,8 +62,11 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   image: {
-    minHeight: 100,
+    minHeight: 200,
     width: DEVICE_WIDTH * 0.5,
+  },
+  button: {
+    backgroundColor: 'red',
   },
 });
 
